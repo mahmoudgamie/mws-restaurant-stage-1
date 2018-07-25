@@ -57,6 +57,7 @@ nav {
 }
 nav h1 {
   margin: auto;
+  line-height: 4;
 }
 nav h1 a {
   color: #fff;
@@ -191,11 +192,11 @@ nav h1 a {
 }
 .inside #map-container {
   background: blue none repeat scroll 0 0;
+  width: 50%;
   height: 87%;
   position: fixed;
   right: 0;
   top: 80px;
-  width: 50%;
 }
 .inside #map {
   background-color: #ccc;
@@ -272,4 +273,39 @@ nav h1 a {
 }
 #restaurant-hours td {
   color: #666;
+}
+
+/* ====================== Media Queries ====================== */
+
+@media screen and (max-width: 750px) { 
+  #breadcrumb {
+    width: calc(100% - 80px);
+  }
+
+  body {
+    background-color: #eee;
+  }
+  
+  .inside #maincontent {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .inside #restaurant-container, .inside #reviews-container, .inside #map-container {
+    width: 100%;
+  }
+
+  .inside #map-container {
+    height: 300px;
+    z-index: 9999;
+    top: 130px;
+  }
+
+  .inside #restaurant-container, .inside #reviews-container, .inside #footer {
+    position : relative;
+    top: 300px;
+  }
+
+  
+
 }
