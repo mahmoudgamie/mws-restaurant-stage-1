@@ -305,7 +305,42 @@ nav h1 a {
     position : relative;
     top: 300px;
   }
+}
 
-  
+@media screen and (min-width: 750px) and (max-width: 1000px) {
+  #restaurants-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 80%;
+  }
+  #restaurant-container, #reviews-container {
+    padding: 20px 0 30px;
+    width: 50%;
+  }
+  #restaurant-container {
+    margin-top: 120px;
+  }
+  #restaurant-cuisine, #restaurant-img {
+    width: 90%;
+    margin-left:30px;
+  }
+  #restaurant-name {
+    text-align: center;
+  }
+  #restaurant-address, #restaurant-hours {
+    padding-left: 30px;
+  }
+  #reviews-container h3 {
+    text-align: center;
+  }
 
+  #reviews-container h2 {
+    padding-left: 30px;
+  }
+
+  #reviews-list li{
+    margin: 0 auto 30px;
+    padding: 30px;
+    width: 80%;
+  }
 }
