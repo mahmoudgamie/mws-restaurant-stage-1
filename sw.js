@@ -1,6 +1,6 @@
-self.addEventListener('install', function (e) {
-    e.waitUntil(
-        caches.open('airhorner').then(function (cache) {
+self.addEventListener('install', function (event) {
+    event.waitUntil(
+        caches.open('restaurant-service-worker').then(function (cache) {
             return cache.addAll([
                 './',
                 './index.html',
@@ -24,3 +24,32 @@ self.addEventListener('install', function (e) {
         })
     );
 });
+
+self.addEventListener('fetch', function(event) {
+    event.respondWith(
+      caches.match(event.request)
+        .then(function(response) {
+          // Cache hit - return response
+          if (response) {
+            return response;
+          }
+          // if no cache available clone the request 
+          var fetchRequest = event.request.clone();
+          return fetch(fetchRequest).then(
+            function(response) {
+              // Check if we received a valid response
+              if(!response || response.status !== 200 || response.type !== 'basic') {
+                return response;
+              }
+              //after cloning the request and the response we put it in the cashe?
+              var responseToCache = response.clone();  
+              caches.open('restaurant-service-worker')
+                .then(function(cache) {
+                  cache.put(event.request, responseToCache);
+                });
+              return response;
+            }
+          );
+        })
+      );
+  });
