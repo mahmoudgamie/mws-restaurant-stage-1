@@ -161,6 +161,7 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.setAttribute('alt', restaurant.name);
   li.append(image);
 
   const name = document.createElement('h1');
@@ -209,3 +210,11 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   });
 } */
 
+//Service Worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').then(function () {
+    console.log('Service Worker Registered')
+  }).catch(function(error){
+    console.log('Service Worker Registeration failed ' + error);
+  });
+}
