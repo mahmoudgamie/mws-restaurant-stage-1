@@ -307,6 +307,25 @@ nav h1 a {
   }
 }
 
+body a.skip-link {
+
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: #a85e09;
+  color: white;
+  padding: 10px;
+  z-index: 100;
+}
+
+body a.skip-link:focus{
+ top: 0;
+}
+
+body a.skip-link:focus a{
+ color: white;
+}
+
 @media screen and (min-width: 750px) and (max-width: 1000px) {
   #restaurants-list {
     display: grid;
